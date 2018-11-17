@@ -12,3 +12,7 @@ sudo swapon swapfile
 sudo nano etc/fstab # Add this line: /swapfile none swap sw 0 0
 cat /proc/meminfo # Confirm the swap file is active
 ```
+### Making your Vagrant box work on NTFS, details [here](https://github.com/hashicorp/vagrant/issues/5020#issuecomment-439563796)
+1. Assuming you've already done your vagrant init...
+2. Insert the following into your Vagrantfile after the line `Vagrant.configure("2") do [config]` worked for me:
+`config.ssh.insert_key = false`
