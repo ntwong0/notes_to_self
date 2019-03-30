@@ -1,9 +1,12 @@
 # All things displays and monitors
 ## Dealing with multiple monitors
 Use `xrandr`
-* Note: random artifacts may occur if the frame buffer is incorrectly sized
-  * The command will return a warning message. Example:
-    * `xrandr: specified screen 6720x2080 not large enough for output HDMI-0 (3840x2160+0+0)`
+* Notes/issues: 
+  * Random artifacts may occur if the frame buffer is incorrectly sized
+    * The command will return a warning message. Example:
+      * `xrandr: specified screen 6720x2080 not large enough for output HDMI-0 (3840x2160+0+0)`
+  * Random artifacts may occur if xrandr conflicts with the display driver
+    * No resolution has been determined for this
 * Usage example
   * Situation
     * After calling `xrandr`, the following information is gathered
