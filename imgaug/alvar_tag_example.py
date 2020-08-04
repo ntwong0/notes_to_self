@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+# _TODO convert to ipynb
+
 import os
 from PIL import Image
 import numpy as np
@@ -13,6 +15,7 @@ import imgaug.random as iar
 
 ia.seed(123)
 
+# random_state is of type imgaug.random.RNG, which is initialized via seed()
 def prismatize(images, random_state, parents, hooks):
     ret_images = list()
     for image in images:
@@ -32,6 +35,11 @@ def load_from_dir(dirname):
     return mat.reshape(*mat.shape, 1)
 
 aug = iaa.Lambda(prismatize)
+
+# use of aug:
+# ndarrayized_images.shape == augmented_images.shape
+# ndarrayized_images.shape == (N, height, width, C) # where N: number of images, C: number of color channels
+# augmented_images = aug(images=ndarrayized_images)
 
 # sanity check
 for mat in [mat.reshape(mat.shape[0], mat.shape[1]) for mat in aug(images=load_from_dir("ar_tags"))]:
